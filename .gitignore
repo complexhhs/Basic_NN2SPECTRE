@@ -1,0 +1,7 @@
+# txt
+*.txt
+
+# so_file_scripts
+so_file_scripts/json
+so_file_scripts/libtorch
+so_file_scripts/CMakeLists.txt
