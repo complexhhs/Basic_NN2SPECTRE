@@ -1,8 +1,12 @@
 # Basic_NN2SPECTRE
 ---
 
-## Data reference
-- https://www.diodes.com/products/discrete/mosfets/mosfet-master-table/#collection-8360=~(Polarity~(~'N*2bP)) BSS8402DW 
+## Data reference + info
+- Data source
+    - wget https://analogicdesign.com/Files/p045.zip 
+- width, length, temperature: {70nm, 2um}, {45nm, 1.5um}, {75}
+- Data columns order
+    - Vds, Vgs, Vbs, Ids, Qd, Qg, Qb
 
 ## Structure
 - ANN training

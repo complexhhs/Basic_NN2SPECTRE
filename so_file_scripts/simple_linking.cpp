@@ -66,9 +66,9 @@ torch::Tensor my_Qpostprocess_tensor(at::Tensor preds, Json::Value root)
         cout << "(debug) " << __func__ << ": Qb(min,max): " << Qb_min << ", " << Qb_max << endl;
     #endif // DEBUG
 
-    preds.index({"...", 0}) = preds.index({"...", 0}) * (Qd_max - Qd_min) + Qd_min // Qd
-    preds.index({"...", 1}) = preds.index({"...", 1}) * (Qg_max - Qg_min) + Qg_min // Qg
-    preds.index({"...", 2}) = preds.index({"...", 2}) * (Qb_max - Qb_min) + Qb_min // Qb
+    preds.index({"...", 0}) = preds.index({"...", 0}) * (Qd_max - Qd_min) + Qd_min; // Qd
+    preds.index({"...", 1}) = preds.index({"...", 1}) * (Qg_max - Qg_min) + Qg_min; // Qg
+    preds.index({"...", 2}) = preds.index({"...", 2}) * (Qb_max - Qb_min) + Qb_min; // Qb
 
     #ifdef DEBUG
         cout << "(debug) " << __func__ << ": first elements of [Qd, Qg, Qb] " << preds[0][0]<< ", " << preds[0][1] << ", " << preds[0][2] << endl;
@@ -80,7 +80,7 @@ int init_setting(const char* ){
     return id;
 }
 
-double my_infer(double vds, double vgs, double vbs,int output_id){
+double my_infer(double vds, double vgs, double vbs, int output_id){
     /*
         Goal: 
             - Vds, Vgs, Vbs를 받아와 적절한 NN 모델의 연산 
@@ -91,7 +91,7 @@ double my_infer(double vds, double vgs, double vbs,int output_id){
     }else if (output_id >= 1 && output_id <= 3){ // Q model
 
     }else{ // 에러
-        cerr << __func__ << ": you give wront output_id. Check this value(output_id): " << output_id << endl;
+        cerr << __func__ << ": you give wrong output_id. Check this value(output_id): " << output_id << endl;
         return;
     }
     return val;
